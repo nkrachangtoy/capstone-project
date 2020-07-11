@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import { StyleSheet, Text, SafeAreaView } from "react-native";
+import { SearchBar } from "react-native-elements";
 import Maps from "./components/Maps";
 import axios from "axios";
 
@@ -7,6 +9,7 @@ export default class App extends Component {
   state = {
     loading: true,
     country: {},
+    search: "",
   };
 
   componentDidMount() {
@@ -16,43 +19,25 @@ export default class App extends Component {
   getCountryStatus = () => {
     axios
       .get("https://api.covid19api.com/summary")
-      .then((res) => {
-        console.log(res.data.Countries[30]);
-        this.setState({
-          loading: false,
-          country: res.data.Countries[30],
-        });
-      })
+      .then((res) => {})
       .catch((err) => console.log(err));
   };
 
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
+
   render() {
-    // console.log(this.state.country);
-    const {
-      Country,
-      NewConfirmed,
-      TotalConfirmed,
-      Date,
-      TotalRecovered,
-    } = this.state.country;
+    const { search } = this.state;
     return (
       <SafeAreaView style={styles.container}>
-        {/* <Text style={styles.titleText}>Covid Diary</Text> */}
-        {/* <Text style={styles.titleText}>
-          {Country}
-          <Text style={styles.innerText}> {Date}</Text>
-        </Text>
-        <Text style={styles.titleText}>
-          New Confirmed Cases{" "}
-          <Text style={styles.innerText}>{NewConfirmed}</Text>
-        </Text>
-        <Text style={styles.titleText}>
-          Total Confirmed Cases{" "}
-          <Text style={styles.innerText}>{TotalConfirmed}</Text>
-        </Text>
-        <Text style={styles.titleText}>
-          <Text style={styles.innerText}>{TotalRecovered}</Text> Recovered
-        </Text> */}
+        {/* <SearchBar
+          placeholder="Search"
+          onChangeText={this.updateSearch}
+          value={search}
+          round
+          autoCorrect={false}
+        /> */}
         <Maps />
       </SafeAreaView>
     );
