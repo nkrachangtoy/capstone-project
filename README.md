@@ -17,3 +17,8 @@ The following features are in progress:
 - Implement database
 
 # Project Screenshots
+
+<img src="assets\screenshots\agenda.png" width="250" >
+<img src="assets\screenshots\location-list.png" width="250" >
+<img src="assets\screenshots\location-tracker.png" width="250" >
+<img src="assets\screenshots\location-snapshot.png" width="250" >
